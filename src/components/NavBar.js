@@ -4,6 +4,7 @@ import cart from "../../public/icon-cart.svg";
 import avatar from "../../public/image-avatar.png";
 import React, {useState} from "react";
 import Cart from "./Cart";
+import Link from "next/link";
 
 const NavBar = () => {
 
@@ -26,7 +27,7 @@ const NavBar = () => {
                 </div>
             )
         } else {
-            return
+            return null
         }
     }
 
@@ -34,9 +35,11 @@ const NavBar = () => {
         <div>
             <nav className="nav">
                 <div className="nav left">
+                    <Link href="/">
                         <span className="logo">
                         <Image src={logo} width={150} height={25} layout="fixed"/>
                         </span>
+                    </Link>
                     <span>Collections</span>
                     <span>Men</span>
                     <span>Women</span>

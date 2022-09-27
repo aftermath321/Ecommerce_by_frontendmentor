@@ -3,6 +3,7 @@ import NavBar from "../src/components/NavBar";
 import Link from "next/link";
 import db from "../utils/mongooseConnect"
 import Products from "../models/Products"
+import GridItem from "../src/components/GridItem";
 
 export const getServerSideProps = async () => {
     await db.connect();
@@ -15,23 +16,29 @@ export const getServerSideProps = async () => {
     }
 }
 
-const Home = ({products}) => {
 
+
+const Home = ({products}) => {
     return (
         <>
             <NavBar/>
-            <div className="products-display">
-                <ul>
-                    {products.map((product) => {
+            {/*<div className="products-display">*/}
+            {/*    <ul>*/}
+            {/*        {products.map((product) => {*/}
 
-                        return <li key={product._id}>
-                            <Link href={{pathname: `/product/${(product.slug)}`}}>
-                                {product.productName}
-                            </Link>
-                        </li>
+            {/*            return <li key={product._id}>*/}
+            {/*                <Link href={{pathname: `/product/${(product.slug)}`}}>*/}
+            {/*                    {product.productName}*/}
+            {/*                </Link>*/}
+            {/*            </li>*/}
 
-                    })}
-                </ul>
+            {/*        })}*/}
+            {/*    </ul>*/}
+            {/*</div>*/}
+            <div className="gridSpace">
+                {products.map((product) =>{
+                    return <GridItem product={product} />
+                })}
             </div>
 
         </>

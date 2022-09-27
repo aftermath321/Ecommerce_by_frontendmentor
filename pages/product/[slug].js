@@ -4,6 +4,7 @@ import React, {useState} from "react";
 import Cart from "../../src/components/Cart";
 import db from "../../utils/mongooseConnect";
 import Products from "../../models/Products";
+import NavBar from "../../src/components/NavBar";
 
 export async function getServerSideProps(context) {
     const {params} = context;
@@ -56,11 +57,14 @@ const ProductPage = ({product}) => {
         return <h1>Loading...</h1>
     } else {
 
-        return <div className="product-window">
-
+        return (
+        <>
+            <NavBar />
+            <div className="product-window">
             <ProductView product={product} handleClick={addToCart}/>
 
         </div>
+        </>)
     }
 }
 export default ProductPage;
